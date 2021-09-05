@@ -7,6 +7,9 @@ class Images(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
     date_posted = models.DateTimeField(default = timezone.now)
+
+    def save_image(self):
+        self.save()
     
     class Meta:
         ordering = ['-pk']
