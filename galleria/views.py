@@ -24,3 +24,10 @@ def upload(request):
             'form':form
         }
     return render(request, 'gallery/load.html',context)
+
+
+def details(request,image_id):
+    id = Images.objects.get(id = image_id)
+    return render(request,'details.html',{'id':id})
+
+

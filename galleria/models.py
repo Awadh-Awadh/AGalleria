@@ -4,6 +4,8 @@ from cloudinary.models import CloudinaryField
 
 class Cat (models.Model):
     name = models.CharField(max_length=30)
+    def __str__(self):
+        return self.name
 
 class Images(models.Model):
     name = models.CharField(max_length=30)
@@ -12,8 +14,11 @@ class Images(models.Model):
     image = CloudinaryField('image', default = '')
     categs = models.ForeignKey(Cat,null=True, blank=True,on_delete=models.CASCADE)
 
-    def save_image(self):
-        self.save()
+    
+    def get_image_id(self):
+        image_id = self.id
+        return image_id
+        
     
     class Meta:
         ordering = ['-pk']
