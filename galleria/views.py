@@ -1,18 +1,11 @@
 from django.shortcuts import render, redirect
 from .models import Images, Cat
 from .forms import PictureForm
+from django.db.models import Q
 
 
 # Create your views here.
 def index(request,):
-    query = request.GET.get('q')
-    if query:
-      search = Images.objects.filter(name__icontains = query)
-      return redirect('index',{"search":search})
-    else:
-        print("mathafaka")
-
-
     category = request.GET.get('category')
     if category is None:
         pictures =Images.objects.all()
@@ -51,4 +44,12 @@ def details(request, pk):
     return render(request,'gallery/datails.html',context)
 
 
+
+def search(request):
+    query = request.GET.get('q')
+    if query:
+      searches = Images.objects.filter(name__icontains = query) | Q(categ__name__icontains = query)
+      return render(request,'gallery/search.html',{"searches":searches})
+    else:
+        redirect('index')
 
