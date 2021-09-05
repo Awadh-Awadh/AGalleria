@@ -35,8 +35,8 @@
   <div class="images">
    {% for picture in pictures %}
    
-      <div>
-       <a href=""> <img class = "img" src="{{picture.image.url}}" alt="{{picture.image.name}}"></a>
+      <div class = "eachImage">
+       <a href="{% url 'details' picture.pk %}"><img class = "img" src="{{picture.image.url}}" alt="{{picture.image.name}}"></a>
       </div>
       
     

@@ -1,11 +1,13 @@
 {% extends 'gallery/layout.html' %}
 
-[% block content %]
+{% block content %}
 
 
-<div>
-  <img class = "img" src="{{photo.image.url}}" alt="{{picture.image.name}}">
- </div>
+<div class="container">
+  <div>
+    <img class = 'imagedetails' src="{{eachimage.image.url}}" alt="">
+  </div>
+</div>
 
  {% endblock %}
 

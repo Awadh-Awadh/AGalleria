@@ -34,4 +34,10 @@ def upload(request):
 
 
 
+def details(request, pk):
+    eachimage = Images.objects.get(id=pk)
+    context = {
+        'eachimage':eachimage
+    }
 
+    return render(request,'gallery/datails.html',context)

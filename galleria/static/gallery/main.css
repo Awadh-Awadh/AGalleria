@@ -1,7 +1,7 @@
 .img{
   height: 400px;
   width: 400px;
-  margin-top: 2rem;
+  
   
 }
 .images{
@@ -10,9 +10,14 @@
   flex-direction: row !important;
   flex-wrap: wrap !important;
   justify-content: space-between;
+  margin-top: 2rem;
   
 }
-.cats{
-  display: flex;
-
+.eachImage{
+  padding: 2rem !important;
+}
+.imagedetails{
+  height: auto;
+  width: 600px;
+  
 }
