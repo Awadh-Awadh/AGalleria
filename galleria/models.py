@@ -7,6 +7,7 @@ class Images(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
     date_posted = models.DateTimeField(default = timezone.now)
+    image = CloudinaryField('image', default = '')
 
     def save_image(self):
         self.save()
@@ -16,13 +17,4 @@ class Images(models.Model):
         verbose_name_plural = 'Images'
 
     def __str__(self):
-        return 
-
-
-
-class photos(models.Model):
-    title = models.CharField(max_length=100)
-    image = CloudinaryField('image')
-    class Meta:
-        
-        verbose_name_plural = 'photos'
+        return self.name

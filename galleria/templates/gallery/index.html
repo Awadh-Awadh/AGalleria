@@ -34,4 +34,13 @@
     </form>
   </div>
 </div>
+<section>
+  <div class="container-fluid">
+   {% for picture in pictures %}
+    <div class="images">
+      <img src="{{picture.image.url}}" alt="">
+    </div>
+  {% endfor %}
+  </div>
+</section>
 {% endblock %}
