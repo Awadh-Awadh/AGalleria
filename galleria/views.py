@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
-from .models import Images
+from .models import Images, Cat
 from .forms import PictureForm
 
 
 # Create your views here.
-def index(request):
+def index(request,):
     context = {
-        "pictures":Images.objects.all()
+        "pictures":Images.objects.all(),
+        "categories":Cat.objects.all()
     }
 
     return render(request, 'gallery/index.html',context)
@@ -26,8 +27,5 @@ def upload(request):
     return render(request, 'gallery/load.html',context)
 
 
-def details(request,image_id):
-    id = Images.objects.get(id = image_id)
-    return render(request,'details.html',{'id':id})
 
 

@@ -11,3 +11,7 @@
   justify-content: space-between;
   
 }
+.cats{
+  display: flex;
+  
+}
