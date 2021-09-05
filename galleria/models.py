@@ -1,12 +1,25 @@
 from django.db import models
 from django.utils import timezone
-from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 
-class Image(models.Model):
+
+class Images(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
-    date_posted = models.DateTimeField(default= timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_posted = models.DateTimeField(default = timezone.now)
+    
+    class Meta:
+        ordering = ['-pk']
+        verbose_name_plural = 'Images'
 
     def __str__(self):
-        return self.name
+        return 
+
+
+
+class photos(models.Model):
+    title = models.CharField(max_length=100)
+    image = CloudinaryField('image')
+    class Meta:
+        
+        verbose_name_plural = 'photos'
