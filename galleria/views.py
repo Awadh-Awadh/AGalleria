@@ -5,8 +5,14 @@ from .forms import PictureForm
 
 # Create your views here.
 def index(request,):
+    category = request.GET.get('category')
+    if category is None:
+        pictures =Images.objects.all()
+    else:
+        pictures = Images.objects.filter(categs__name = category)
+
     context = {
-        "pictures":Images.objects.all(),
+        "pictures":pictures,
         "categories":Cat.objects.all()
     }
 

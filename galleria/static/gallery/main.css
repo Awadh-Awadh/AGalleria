@@ -1,6 +1,7 @@
 .img{
   height: 400px;
   width: 400px;
+  margin-top: 2rem;
   
 }
 .images{
@@ -13,5 +14,5 @@
 }
 .cats{
   display: flex;
-  
+
 }
