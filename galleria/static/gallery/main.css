@@ -1,11 +1,10 @@
 .img{
-  height: 400px;
-  width: 400px;
+  height: 300px;
+  width: 300px;
   
   
 }
 .images{
-  margin: 2rem 0;
   display: flex !important;
   flex-direction: row !important;
   flex-wrap: wrap !important;

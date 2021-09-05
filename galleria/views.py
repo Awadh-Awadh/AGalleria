@@ -5,6 +5,14 @@ from .forms import PictureForm
 
 # Create your views here.
 def index(request,):
+    query = request.GET.get('q')
+    if query:
+      search = Images.objects.filter(name__icontains = query)
+      return redirect('index',{"search":search})
+    else:
+        print("mathafaka")
+
+
     category = request.GET.get('category')
     if category is None:
         pictures =Images.objects.all()
@@ -41,3 +49,6 @@ def details(request, pk):
     }
 
     return render(request,'gallery/datails.html',context)
+
+
+
