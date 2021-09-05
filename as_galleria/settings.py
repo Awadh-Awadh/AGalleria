@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary'
+    'cloudinary',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,4 @@ cloudinary.config(
   api_key = "466655358734368", 
   api_secret = "UVVyplom7jX1BzRXM3GjGkOZiG0" 
 )
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

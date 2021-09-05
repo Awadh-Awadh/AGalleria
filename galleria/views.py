@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Images
 from .forms import PictureForm
 
@@ -12,8 +12,15 @@ def index(request):
     return render(request, 'gallery/index.html',context)
 
 def upload(request):
-    form = PictureForm()
-    context = {
-        'form':form
-    }
+    if request.method == 'POST':
+        form = form = PictureForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        
+    else:
+        form = PictureForm()
+        context = {
+            'form':form
+        }
     return render(request, 'gallery/load.html',context)
