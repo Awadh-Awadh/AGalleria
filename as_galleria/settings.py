@@ -23,13 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('SECRET_KEY')
-SECRET_KEY='django-insecure-+mtv62un+u276k5w)g&!dxeih5j7@ilf-r^xw9d=ify^hthe*@'
+SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY='django-insecure-+mtv62un+u276k5w)g&!dxeih5j7@ilf-r^xw9d=ify^hthe*@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
+
 
 
 # Application definition
@@ -83,9 +85,9 @@ WSGI_APPLICATION = 'as_galleria.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'images',
-        'USERNAME': 'moringa',
-        'PASSWORD': 'Access'
+        'NAME': os.environ.get('NAME'),
+        'USERNAME': os.environ.get('USERNAME'),
+        'PASSWORD': os.environ.get('PASSWORD')
 
     }
 }
@@ -136,7 +138,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # adding config
 cloudinary.config( 
   cloud_name = "die2khepc", 
-  api_key = "466655358734368", 
-  api_secret = "UVVyplom7jX1BzRXM3GjGkOZiG0" 
+  api_key = os.environ.get('API_KEY'), 
+  api_secret = os.environ.get('API_SECRET') 
 )
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

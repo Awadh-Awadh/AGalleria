@@ -4,6 +4,11 @@ from cloudinary.models import CloudinaryField
 
 class Cat (models.Model):
     name = models.CharField(max_length=30)
+
+    @classmethod
+    def get_all_categories(cls):
+        return Cat.objects.all()
+        
     def __str__(self):
         return self.name
 class Location(models.Model):
@@ -29,9 +34,12 @@ class Images(models.Model):
     def get_image_id(self):
         image_id = self.id
         return image_id
-        
+
+    @classmethod
+    def get_images(cls):
+        return Images.objects.all()
     '''
-    an inner optional class meta that defines the ordering of image objects
+    An inner optional class meta that defines the ordering of image objects
     '''
     
     class Meta:
