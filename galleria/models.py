@@ -5,14 +5,24 @@ from cloudinary.models import CloudinaryField
 class Cat (models.Model):
     name = models.CharField(max_length=30)
 
-    @classmethod
-    def get_all_categories(cls):
-        return Cat.objects.all()
+    def save_category(self):
+       Cat.objects.save()
+
+    def delete_catecory(self):
+        return Cat.objects.delete()
+
+    def update_category(self):
+        return Cat.objects.update()
 
     def __str__(self):
         return self.name
 class Location(models.Model):
     name = models.CharField(max_length=30)
+
+
+
+
+    
     def __str__(self):
         return self.name
 '''
@@ -40,9 +50,7 @@ class Images(models.Model):
 
     def filter_image_by_location(self, location):
         image = Images.objects.filter(location__name = location)
-        return self.image
-
-    
+        return self.image   
 
     @classmethod
     def get_images(cls):
