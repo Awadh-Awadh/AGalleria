@@ -4,14 +4,34 @@
 
 
 <div class="container">
-  <div>
-    <img class = 'imagedetails' src="{{eachimage.image.url}}" alt="">
+  <div class="contain">
+    <div class="content">
+      <div>
+        <img class = 'imagedetails' src="{{eachimage.image.url}}" alt="">
+      </div>
+      <div class="dets">
+        <h5>Image Name : {{eachimage.name}}</h5>
+        <p class="text-muted">
+         Date posted {{eachimage.date_posted}}
+        </p>
+        <p class="text-muted">
+          Category : {{eachimage.categs}}
+        </p>
+        <p class="text-muted">
+          Location: {{eachimage.location}}
+        </p>
+        <p class="text-muted">
+          Url : {{eachimage.image.url}}
+        </p>
+    
+      </div>
+      <div class="btn">
+       <a href="{% url 'index' %}"> <div class="btn btn-lg btn-outline-success"> Download</div></a>
+      </div>
+    </div>
+   
   </div>
-  <div class="dets">
-    <p class="text-muted">
-     Date posted {{eachimage.date_posted}}
-    </p>
-  </div>
+ 
 </div>
 
  {% endblock %}

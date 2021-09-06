@@ -1,6 +1,10 @@
 .img{
   height: 300px;
   width: 300px;
+  transition: 2s ease;
+  
+ 
+ 
   
   
 }
@@ -10,6 +14,8 @@
   flex-wrap: wrap !important;
   justify-content: space-between;
   margin-top: 2rem;
+  position: relative;
+ 
   
 }
 .eachImage{
@@ -19,4 +25,32 @@
   height: auto;
   width: 600px;
   
+}
+#header{
+  padding:10% 0 ;
+ 
+}
+.head h1{
+  font-size: 2rem;
+  padding: 2rem 0;
+}
+.top h1{
+  color: green;
+  font-size: 5rem !important;
+}
+a{
+  text-decoration: none;
+}
+.img:hover{
+  width: 400px;
+  opacity: .5 !important;
+  transform: rotate(360deg);
+}
+.contain{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.content{
+  margin: 2rem 0;
 }

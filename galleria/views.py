@@ -21,7 +21,7 @@ def index(request,):
 
 def upload(request):
     if request.method == 'POST':
-        form = form = PictureForm(request.POST, request.FILES)
+        form = PictureForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('index')
