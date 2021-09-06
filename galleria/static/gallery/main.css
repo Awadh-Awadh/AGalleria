@@ -51,6 +51,9 @@ a{
   justify-content: center;
   align-content: center;
 }
-.content{
+.details-content{
   margin: 2rem 0;
+  width: auto;
+  background-color: none;
+  box-shadow: 4px 4px 3px green;
 }

@@ -10,7 +10,11 @@ class Location(models.Model):
     name = models.CharField(max_length=30)
     def __str__(self):
         return self.name
-
+'''
+model creation for image model
+contains a link to the cloudinary image fields
+each image has one to many relationship with with categories and location
+'''
 class Images(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField()
@@ -18,12 +22,17 @@ class Images(models.Model):
     image = CloudinaryField('image', default = '')
     categs = models.ForeignKey(Cat,null=True, blank=True,on_delete=models.CASCADE)
     location = models.ForeignKey(Location,null=True, blank=True,on_delete=models.CASCADE)
-
+    '''
+    A function that generates an id for each image
+    '''
     
     def get_image_id(self):
         image_id = self.id
         return image_id
         
+    '''
+    an inner optional class meta that defines the ordering of image objects
+    '''
     
     class Meta:
         ordering = ['-pk']
