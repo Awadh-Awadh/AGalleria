@@ -48,7 +48,7 @@ def details(request, pk):
 def search(request):
     query = request.GET.get('q')
     if query:
-      searches = Images.objects.filter(name__icontains = query) | Q(categ__name__icontains = query)
+      searches = Images.objects.filter (name__icontains = query)
       return render(request,'gallery/search.html',{"searches":searches})
     else:
         redirect('index')
