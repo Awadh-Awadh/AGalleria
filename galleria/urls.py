@@ -1,6 +1,10 @@
 from . import views
 from django.urls import path
 
+'''
+All url patterns that creates all routes in the gallery apps
+Include dynamic routing using the pk of each image
+'''
 
 urlpatterns = [
   path('', views.index, name = 'index'),

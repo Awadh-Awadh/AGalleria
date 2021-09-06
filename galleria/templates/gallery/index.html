@@ -13,6 +13,7 @@
       </div>
       <div class="search">
         <form action = "{% url 'search' %}" class="d-flex">
+          <!-- create a form name to access the form contents -->
           <input id ='q' name = 'q' class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
@@ -24,6 +25,9 @@
       <a href="{% url 'index' %}">All</a>
       {% for category in categories %}
       <li class="list-group-item">
+
+        <!-- create a dynamic route route that creates a category parenter which is eaual to any of the categories created -->
+
         <a href="{% url 'index' %}?category={{category.name}}">{{category.name}}</a>
       </li>
       {% endfor %}
@@ -41,6 +45,10 @@
    {% for picture in pictures %}
    
       <div class = "eachImage">
+
+        <!-- when an image is clicked, gets to the url to details/clicked image id. this is the id that is passed as an 
+        arg to the details function-->
+
        <a href="{% url 'details' picture.pk %}"><img class = "img" src="{{picture.image.url}}" alt="{{picture.image.name}}"></a>
       </div>
       
