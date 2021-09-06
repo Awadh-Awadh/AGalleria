@@ -8,7 +8,7 @@ class Cat (models.Model):
     @classmethod
     def get_all_categories(cls):
         return Cat.objects.all()
-        
+
     def __str__(self):
         return self.name
 class Location(models.Model):
@@ -30,10 +30,19 @@ class Images(models.Model):
     '''
     A function that generates an id for each image
     '''
-    
+    def search_images(self, id):
+        image = Images.objects.filter(id = id)
+        return self.image
+
     def get_image_id(self):
         image_id = self.id
         return image_id
+
+    def filter_image_by_location(self, location):
+        image = Images.objects.filter(location__name = location)
+        return self.image
+
+    
 
     @classmethod
     def get_images(cls):
