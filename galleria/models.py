@@ -6,13 +6,13 @@ class Cat (models.Model):
     name = models.CharField(max_length=30)
 
     def save_category(self):
-       Cat.objects.save()
+       return self.save()
 
     def delete_catecory(self):
-        return Cat.objects.delete()
+        return self.delete()
 
     def update_category(self):
-        return Cat.objects.update()
+        return self.update()
 
     def __str__(self):
         return self.name
@@ -21,12 +21,13 @@ class Location(models.Model):
 
 
     def save_location(self):
-        Location.objects.save()
+        return self.save()
 
     def delete_location(self):
-        return Location.objects.delete()
+        return self.delete()
+        
     def update_category(self):
-        return Location.objects.update()
+        return self.update()
 
 
 
@@ -47,17 +48,18 @@ class Images(models.Model):
     '''
     A function that generates an id for each image
     '''
-    def search_images(self, id):
-        image = Images.objects.filter(id = id)
-        return self.image
+    @classmethod
+    def search_images(cls, id):
+        image = cls.objects.filter(id__icontains = id)
+        return image
 
     def get_image_id(self):
         image_id = self.id
         return image_id
-
-    def filter_image_by_location(self, location):
-        image = Images.objects.filter(location__name = location)
-        return self.image   
+    @classmethod
+    def filter_image_by_location(cls, location):
+        image = cls.objects.filter(location__name = location)
+        return image   
 
     @classmethod
     def get_images(cls):
