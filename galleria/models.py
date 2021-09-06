@@ -20,9 +20,16 @@ class Location(models.Model):
     name = models.CharField(max_length=30)
 
 
+    def save_location(self):
+        Location.objects.save()
+
+    def delete_location(self):
+        return Location.objects.delete()
+    def update_category(self):
+        return Location.objects.update()
 
 
-    
+
     def __str__(self):
         return self.name
 '''
