@@ -48,12 +48,22 @@
   <div class="images">
    {% for picture in pictures %}
    
+   
       <div class = "eachImage">
+        <div class="content-overlay"></div>
 
         <!-- when an image is clicked, gets to the url to details/clicked image id. this is the id that is passed as an 
         arg to the details function-->
 
-       <a href="{% url 'details' picture.pk %}"><img class = "img" src="{{picture.image.url}}" alt="{{picture.image.name}}"></a>
+       <a href="{% url 'details' picture.pk %}"><img class = "content-image" src="{{picture.image.url}}" alt="{{picture.image.name}}">
+        <div class="content-details fadeIn-bottom">
+        <h3 class="content-title">{{picture.name}}</h3>
+        <p class="content-text">{{picture.description}}</p>
+        <p><i class=" icon fas fa-cloud-download-alt"></i></p>
+        <p><i class=" love fas fa-heart"></i></p>
+      </div>
+      
+      </a>
       </div>
       
     
