@@ -14,6 +14,7 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import  dj_database_url as dj_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,7 +28,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECRET_KEY='django-insecure-+mtv62un+u276k5w)g&!dxeih5j7@ilf-r^xw9d=ify^hthe*@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+os.environ.get('DEBUG')
 
 # ALLOWED_HOSTS = []
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS')
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -63,13 +66,6 @@ ROOT_URLCONF = 'as_galleria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-
-        '''
-        Antother convention of creating templates would be (templates directory-----> home.html) by excluding
-        (templates directory---->appname directory---->home.html). When we use convention1 we need to update location of our new templates
-        in the DIRS list by adding for instance  DIRS : [str(BASE_DIR.joinpath('templates'))]
-        '''
-        
         'DIRS': [], 
         'APP_DIRS': True,
         'OPTIONS': {
@@ -88,16 +84,20 @@ WSGI_APPLICATION = 'as_galleria.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
+DATABASES={}
+PRODUCTION = os.environ.get('PRODUCTION')
+if PRODUCTION == 'True':
+    DATABASES['default'] = dj_url.config()
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ.get('DB_NAME'),
+            'USERNAME': os.environ.get('USERNAME'),
+            'PASSWORD': os.environ.get('PASSWORD')
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('NAME'),
-        'USERNAME': os.environ.get('USERNAME'),
-        'PASSWORD': os.environ.get('PASSWORD')
-
+        }
     }
-}
 
 
 # Password validation
@@ -137,6 +137,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR/'static'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
