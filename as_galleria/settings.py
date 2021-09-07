@@ -63,7 +63,14 @@ ROOT_URLCONF = 'as_galleria.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+
+        '''
+        Antother convention of creating templates would be (templates directory-----> home.html) by excluding
+        (templates directory---->appname directory---->home.html). When we use convention1 we need to update location of our new templates
+        in the DIRS list by adding for instance  DIRS : [str(BASE_DIR.joinpath('templates'))]
+        '''
+        
+        'DIRS': [], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
